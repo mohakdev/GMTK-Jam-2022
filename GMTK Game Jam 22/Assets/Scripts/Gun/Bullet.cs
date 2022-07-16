@@ -10,7 +10,8 @@ namespace RadiantGames.RandomBullets
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                print("Damage Done");
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(50);
+                Destroy(gameObject);
             }
             else
             {

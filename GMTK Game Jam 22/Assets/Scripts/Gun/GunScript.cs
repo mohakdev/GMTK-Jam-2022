@@ -9,7 +9,8 @@ namespace RadiantGames.RandomBullets
     {
         [SerializeField] Transform ShootingPoint;
         [SerializeField] GameObject BulletPrefab;
-        int Ammo = 6;
+        [SerializeField] int BulletVelocity = 10;
+        public int Ammo = 6;
 
         void Update()
         {
@@ -25,7 +26,8 @@ namespace RadiantGames.RandomBullets
             GameObject Bullet = Instantiate(BulletPrefab, ShootingPoint.position, ShootingPoint.rotation);
             Rigidbody2D BulletRbody = Bullet.GetComponent<Rigidbody2D>();
 
-            BulletRbody.velocity = transform.right * 10;
+            BulletRbody.velocity = transform.right * BulletVelocity;
+            Ammo -= 1;
         }
 
         bool IsShooting()

@@ -7,10 +7,18 @@ namespace RadiantGames.RandomBullets
 {
     public class GunScript : MonoBehaviour
     {
+        Rigidbody2D Playerbody; //For Knockback effect
+        
         [SerializeField] Transform ShootingPoint;
         [SerializeField] GameObject BulletPrefab;
         [SerializeField] int BulletVelocity = 10;
+        [SerializeField] int KnockbackIntensity = 250;
         public int Ammo = 6;
+
+        void Start()
+        {
+            Playerbody = GetComponent<Rigidbody2D>();
+        }
 
         void Update()
         {
@@ -27,7 +35,13 @@ namespace RadiantGames.RandomBullets
             Rigidbody2D BulletRbody = Bullet.GetComponent<Rigidbody2D>();
 
             BulletRbody.velocity = transform.right * BulletVelocity;
+            KnockbackEffect();
             Ammo -= 1;
+        }
+
+        void KnockbackEffect()
+        {
+            Playerbody.AddRelativeForce(KnockbackIntensity * Vector2.left);
         }
 
         bool IsShooting()

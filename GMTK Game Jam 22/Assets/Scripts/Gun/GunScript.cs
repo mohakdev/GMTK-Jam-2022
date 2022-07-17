@@ -49,13 +49,14 @@ namespace RadiantGames.RandomBullets
 
             BulletRbody.velocity = transform.right * BulletVelocity;
             KnockbackEffect();
+            AudioManager.PlaySound(AudioManager.Instance.AudioList[0]);
             Ammo -= 1;
             AmmoLabel.text = $"AMMO LEFT : {Ammo}";
         }
 
         void KnockbackEffect()
         {
-            Playerbody.AddRelativeForce(KnockbackIntensity * Vector2.left);
+            Playerbody.velocity = transform.right * -KnockbackIntensity;
         }
 
         bool IsShooting()

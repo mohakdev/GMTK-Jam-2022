@@ -33,5 +33,11 @@ namespace RadiantGames.RandomBullets
                 Player.GetComponent<Player>().TakeDamage(DamagePerFrame);
             }
         }
+
+        public override void Die()
+        {
+            AudioManager.PlaySound(AudioManager.Instance.AudioList[1]);
+            base.Die();
+        }
     }
 }

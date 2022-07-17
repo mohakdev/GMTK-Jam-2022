@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RadiantGames.RandomBullets
 {
@@ -10,6 +11,11 @@ namespace RadiantGames.RandomBullets
         void Start()
         {
             InitializeStats(8, 100);
+        }
+        
+        public override void Die()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         void FixedUpdate()

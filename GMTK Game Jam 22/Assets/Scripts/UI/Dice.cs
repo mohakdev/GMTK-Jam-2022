@@ -8,6 +8,7 @@ namespace RadiantGames.RandomBullets
     public class Dice : MonoBehaviour
     {
         [SerializeField] Sprite[] DiceImages;
+        public static bool rolled;
         GunScript gunScript;
         // Start is called before the first frame update
         void Start()
@@ -20,6 +21,7 @@ namespace RadiantGames.RandomBullets
             GetComponent<Image>().sprite = DiceImages[randomNumber];
             int diceNumber = randomNumber + 1; //Because Index starts from zero and dice starts from 1
             gunScript.AddAmmo(diceNumber);
+            rolled = true;
         }
     }
 }

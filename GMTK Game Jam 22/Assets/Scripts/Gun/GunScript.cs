@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace RadiantGames.RandomBullets
@@ -11,6 +12,7 @@ namespace RadiantGames.RandomBullets
         
         [SerializeField] Transform ShootingPoint;
         [SerializeField] GameObject BulletPrefab;
+        [SerializeField] Text AmmoLabel;
         [SerializeField] int BulletVelocity = 10;
         [SerializeField] int KnockbackIntensity = 250;
         public int Ammo = 6;
@@ -23,11 +25,12 @@ namespace RadiantGames.RandomBullets
         public void AddAmmo(int number)
         {
             Ammo += number;
-            print(Ammo);
+            AmmoLabel.text = $"AMMO LEFT : {Ammo}";
         }
         void ResetAmmo()
         {
             Ammo = 0;
+            AmmoLabel.text = $"AMMO LEFT : {Ammo}";
         }
 
         void Update()
@@ -47,6 +50,7 @@ namespace RadiantGames.RandomBullets
             BulletRbody.velocity = transform.right * BulletVelocity;
             KnockbackEffect();
             Ammo -= 1;
+            AmmoLabel.text = $"AMMO LEFT : {Ammo}";
         }
 
         void KnockbackEffect()
@@ -56,6 +60,7 @@ namespace RadiantGames.RandomBullets
 
         bool IsShooting()
         {
+            if (Time.timeScale <= 0) { return false; }
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 return true;

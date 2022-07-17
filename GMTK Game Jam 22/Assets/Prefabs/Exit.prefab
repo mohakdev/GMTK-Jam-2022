@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fcb391337d7d47b278375e9af072c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameCompleteLabel: {fileID: 8221624116817910080, guid: 22c85d94e2114ea4f81b54d740c359be, type: 3}

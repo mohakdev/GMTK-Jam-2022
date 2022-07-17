@@ -8,6 +8,7 @@ namespace RadiantGames.RandomBullets
     {
         [SerializeField] int FollowLimit = 12;
         [SerializeField] int DamagePerFrame = 1;
+        [SerializeField] GameObject DeathEffect;
         GameObject Player;
         
         // Start is called before the first frame update
@@ -37,6 +38,7 @@ namespace RadiantGames.RandomBullets
         public override void Die()
         {
             AudioManager.PlaySound(AudioManager.Instance.AudioList[1]);
+            Instantiate(DeathEffect, transform.position, transform.rotation).SetActive(true);
             base.Die();
         }
     }

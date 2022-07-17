@@ -18,6 +18,16 @@ namespace RadiantGames.RandomBullets
         void Start()
         {
             Playerbody = GetComponent<Rigidbody2D>();
+            ResetAmmo();
+        }
+        public void AddAmmo(int number)
+        {
+            Ammo += number;
+            print(Ammo);
+        }
+        void ResetAmmo()
+        {
+            Ammo = 0;
         }
 
         void Update()

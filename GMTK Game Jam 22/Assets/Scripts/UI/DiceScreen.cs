@@ -12,13 +12,6 @@ namespace RadiantGames.RandomBullets
         {
             Time.timeScale = 0;
         }
-        void Update()
-        {
-            if (Dice.rolled.Equals(true))
-            {
-                ShowStartButton();
-            }
-        }
         public void ShowStartButton()
         {
             RollButton.SetActive(false);
